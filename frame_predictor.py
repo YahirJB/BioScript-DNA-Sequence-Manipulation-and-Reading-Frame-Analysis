@@ -17,3 +17,7 @@ def translate_orfs(orfs):   # translate the ORFs into amino acid sequences
     return amino_acids
 
 def display(orfs, amino_acids): # displays the results
+    for i, (orf, amino_acid) in enumerate(zip(orfs, amino_acids), start=1):
+        print(f"ORF {i}:")
+        print(f"DNA Sequence: {orf}")
+        print(f"Amino Acid Sequence: {amino_acid}\n")
