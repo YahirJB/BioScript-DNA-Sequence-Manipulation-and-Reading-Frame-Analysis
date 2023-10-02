@@ -43,7 +43,7 @@ def extract_orfs(DNAstrand):    # Find the orfs patter in the strand
 
 
 def filter(orfs, min_length, max_length):   # filter for minimim and maximim squence len
-    filtered_orfs =
+    filtered_orfs = [orf for orf in orfs if min_length <= len(orf) <= max_length]
     return filtered_orfs
 
 def translate_orfs(orfs):   # translate the ORFs into amino acid sequences
