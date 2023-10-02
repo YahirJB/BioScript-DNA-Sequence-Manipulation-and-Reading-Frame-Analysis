@@ -1,8 +1,15 @@
 from DNASeqLib import myfunctions
 
 def extract_orfs(DNAstrand):    # Find the orfs patter in the strand
-    orf_pattern = 
-    orfs = orf_pattern.findall(DNAstrand)
+    s = len(DNAstrand)
+    i = 0
+    while i < s:
+        codon = DNAstrand[i:i+3]
+        codon_Seq += codon + '-'
+        i+=1
+    codon_Seq = codon_Seq.rstrip('-')   # getting rid of any trailing
+    codon_Seq = codon_Seq.strip('-') 
+    
     return orfs
 
 
