@@ -3,13 +3,23 @@ from DNASeqLib import myfunctions
 def extract_orfs(DNAstrand):    # Find the orfs patter in the strand
     s = len(DNAstrand)
     i = 0
+    orfs = []
     while i < s:
         codon = DNAstrand[i:i+3]
-        codon_Seq += codon + '-'
-        i+=1
-    codon_Seq = codon_Seq.rstrip('-')   # getting rid of any trailing
-    codon_Seq = codon_Seq.strip('-') 
-    
+        amino_acid = rna_codon_table.get(codon)
+        if amino_acid == "M":
+            start_index = i
+            while i < s - 2:
+                codon = DNAstrand[i:i+3]
+                amino_acid = rna_codon_table.get(codon)
+                if amino_acid == "Stop":
+                    end_index = i + 2
+                    orf_seq = DNAstrand[start_index:end_index + 1]
+                    orfs.append(orf_seq)
+                    break
+                i += 3
+        else:
+            i += 3
     return orfs
 
 
